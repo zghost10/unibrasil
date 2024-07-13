@@ -37,7 +37,7 @@ export const LoginForm = () => {
   }
 
   return (
-    <form className="flex flex-col gap-2">
+    <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-2">
       <div className="flex flex-col gap-2">
         <div className="relative w-full">
           <label
@@ -78,13 +78,14 @@ export const LoginForm = () => {
 
       <div className="flex flex-col w-full justify-center gap-2 mt-2">
         <Button
-          type="button"
+          type="link"
+          href="/empresa"
           className="flex justify-center items-center gap-2"
           submit
           bold
         >
           Entrar com credenciais
-          <Spinner spin={true} />
+          {/* <Spinner spin={true} /> */}
         </Button>
 
         {/* <Button

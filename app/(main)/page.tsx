@@ -23,7 +23,7 @@ export default function Page() {
         
         <div className="w-full flex justify-center items-center gap-6">
           <Link 
-            href="/empresa" 
+            href="/login" 
             className="uppercase flex flex-col justify-between items-center px-12 py-12 gap-3 w-[22rem] bg-paua-800 hover:bg-paua-900 text-zinc-200 hover:text-white rounded-md border border-2 border-transparent hover:border-white"
           >
             <PiBuildings className="w-[3rem] h-[3rem]"/>

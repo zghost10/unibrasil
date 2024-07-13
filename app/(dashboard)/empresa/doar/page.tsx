@@ -5,7 +5,7 @@ export default function Page() {
   return (
     <div className="flex flex-col w-full h-screen p-12">
       <div className="grid grid-cols-3 gap-3 ">
-        <Link href="#" className="flex flex-row gap-3 justify-start items-center p-12 w-full bg-white rounded-md">
+        <Link href="/ong/necessidades" className="flex flex-row gap-3 justify-start items-center p-12 w-full bg-white rounded-md">
           <div className="flex justify-center items-center w-[5rem] h-[5rem] bg-zinc-200">
             Logo
           </div>

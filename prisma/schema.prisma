@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id            Int            @id @default(autoincrement())
+
+  name          String
+  
+  // Fiscal info...
+  cnpj          String
+  
+  // Locale
+  adress        String
+
+
+  // Items from this company
+  items         ItemCompany[]
+
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @default(now()) @updatedAt()
+}
+
+model ItemCompany {
+  id            Int            @id @default(autoincrement())
+  
+  company       Company        @relation(fields: [companyId], references: [id])
+  companyId     Int
+  item          Item           @relation(fields: [itemId], references: [id])
+  itemId        Int
+
+  assignedAt    DateTime       @default(now())
+}
+
+model Item {
+  id            Int            @id @default(autoincrement())
+
+  name          String
+  type          String
+  amount        Int
+  condition     String
+  expires       DateTime?
+
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @default(now()) @updatedAt()
+
+  // Relationships
+  companies     ItemCompany[]
+}
+
+
+model NgoItem {
+  id            Int            @id @default(autoincrement())
+  
+  ngo           NGO            @relation(fields: [ngoId], references: [id])
+  ngoId         Int
+  item          Item           @relation(fields: [itemId], references: [id])
+  itemId        Int
+
+  assignedAt    DateTime       @default(now())
+}
+
+model NGO {
+  id            Int            @id @default(autoincrement())
+
+  name          String
+  
+  // Fiscal info...
+  cnpj          String
+  
+  // Locale
+  adress        String
+
+
+  // Items from this company
+  items         ItemCompany[]
+
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @default(now()) @updatedAt()
+}
